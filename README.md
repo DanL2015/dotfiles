@@ -125,7 +125,7 @@ Login as root using the password you set using `passwd`
 ### Add new user
 ```
 useradd -mG wheel *user*
-setpasswd *user*
+passwd *user*
 visudo
 ```
 Uncomment the following line:
