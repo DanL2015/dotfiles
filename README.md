@@ -174,6 +174,11 @@ sudo pacman -Syu xorg-xclipboard xorg-xinput xorg-xrandr xorg-xrdb acpilight
 sudo pacman -Syu firefox thunar thunar-archive-plugin thunar-volman xarchiver kitty bleachbit maim timeshift viewnoir gimp gparted gpick zathura zathura-pdf-mupdf code neovim libreoffice-fresh obsidian mpv obs unzip
 yay -Syu spotify slack-desktop
 ```
+### Settings
+Remember that in order to open settings through the launcher, edit the .desktop files.
+```
+sudo pacman -Syu xfce4-settings
+```
 ### Fonts
 ```
 yay -Syu ttf-iosevka-nerd ttf-material-design-iconic-font ttf-ms-win11-auto ttf-roboto noto-fonts-emoji
@@ -188,7 +193,7 @@ systemctl enable --user pipewire-pulse.service
 ```
 sudo pacman -Syu htop neofetch fish picom ranger playerctl starship
 yay -Syu i3lock-color spicetify-cli pywal-16-colors
-sudo chsh -s /usr/bin/fish
+chsh -s /usr/bin/fish
 ```
 ### Optimization
 Optional optimization for battery life.
