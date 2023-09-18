@@ -191,8 +191,40 @@ yay -Syu i3lock-color spicetify-cli pywal-16-colors
 sudo chsh -s /usr/bin/fish
 ```
 ### Optimization
+Optional optimization for battery life.
+Powertop: Battery optimization
+Intel-undervolt: Undervolt CPU and GPU (-80 works best for me)
+[Auto CPUfreq](https://github.com/AdnanHodzic/auto-cpufreq): Switch between CPU governors automatically
 ```
-sudo pacman -Syu powertop cpupower auto-cpufreq
+sudo pacman -Syu powertop intel-undervolt
 ```
+Create systemd service `/etc/systemd/system/powertop.service` to autotune powertop on startup.
+```
+[Unit]
+Description=Powertop tunings
 
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/powertop --auto-tune
 
+[Install]
+WantedBy=multi-user.target
+```
+Start the services
+```
+sudo systemctl enable cpupower.service
+sudo systemctl enable powertop.service 
+```
+# Installing Dotfiles
+## AwesomeWM Setup
+Copy AwesomeWM dotfiles into `~/.config/awesome`
+```
+git clone https://github.com/DanL2015/AwesomeWM.git ~/.config/awesome
+git clone https://github.com/DanL2015/bling.git ~/.config/awesome/bling
+```
+## Application Dotfiles
+Copy dotfiles into `~/.config`
+```
+git clone https://github.com/DanL2015/archinstall.git ~/.config
+```
