@@ -35,30 +35,11 @@ alias yta-vorbis="yt-dlp --extract-audio --audio-format vorbis "
 alias yta-wav="yt-dlp --extract-audio --audio-format wav "
 alias ytv-best="yt-dlp -f bestvideo+bestaudio "
 
-alias terminal-minesweeper='~/Documents/Coding/ncurses/tminesweeper/bin/main'
-
 # the terminal rickroll
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 
-# visualizer
-# alias visualizer='sh ~/.config/glava/startup.sh'
-
-# microsoft rewards
-alias msrewards='python ~/Documents/Coding/Python/MicrosoftRewardAutomator/webscraper.py'
-
-# quoth
-alias quoth='python ~/Documents/Coding/Quoth/quoth.py'
-
 function fish_greeting
 end
-
-# function fish_greeting
-# 	figlet -f small i use arch btw | lolcat
-# end
-
-# function fish_greeting
-#	fortune | cowthink
-# end
 
 ## Starship prompt
 starship init fish | source
