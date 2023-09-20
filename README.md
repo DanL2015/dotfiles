@@ -231,5 +231,6 @@ git clone https://github.com/DanL2015/bling.git ~/.config/awesome/bling
 ## Application Dotfiles
 Copy dotfiles into `~/.config`
 ```
-git clone https://github.com/DanL2015/archinstall.git ~/.config
+git clone https://github.com/DanL2015/archinstall.git
+cp archinstall/* ~/.config
 ```
