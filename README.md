@@ -139,6 +139,12 @@ exit
 ```
 
 # Install Software
+## Connecting to Wifi
+We have to setup wifi again :(
+```
+nmcli d wifi list
+nmcli d wifi con "*SSID*" password "*PASS*"
+```
 ## Installing AwesomeWM
 ### Install Xorg and GPU drivers
 ```
