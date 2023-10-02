@@ -4,11 +4,11 @@ Personal Arch Linux dotfiles and installation instructions so I can restore my s
 (Commands in `**` should be substituted with their correct values)
 ## PreInstallation
 ### Wifi
-Use `iwctl` to connect to an available wifi network.
+Use `iwctl` to connect to an available wifi network. (If connected by ethernet, there should be a connection already.)
 ```
 iwctl
 device list
-station device scan
+station *device* scan
 station *device* list-networks
 station *device* connect *SSID*
 ```
@@ -110,6 +110,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 Optional: detect other operating systems
+Comment out `GRUB_DISABLE_OS_PROBER=false` in `/etc/default/grub` before running `grub-mkconfig`
 ```
 pacman -S os-prober
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -126,11 +127,11 @@ Login as root using the password you set using `passwd`
 ```
 useradd -mG wheel *user*
 passwd *user*
-visudo
+EDITOR=vim visudo
 ```
 Uncomment the following line:
 ```
-#%wheel ALL=(ALL) ALL
+#%wheel ALL=(ALL:ALL) ALL
 ```
 Logout from root and relogin with your new user account.
 ```
@@ -178,6 +179,8 @@ yay -Syu spotify slack-desktop
 Remember that in order to open settings through the launcher, edit the .desktop files.
 ```
 sudo pacman -Syu xfce4-settings
+cd /usr/share/applications
+sudo sed -i.bak '/OnlyShowIn=XFCE;/d' *
 ```
 ### Fonts
 ```
@@ -185,7 +188,7 @@ yay -Syu ttf-iosevka-nerd ttf-material-design-iconic-font ttf-ms-win11-auto ttf-
 ```
 ### Audio and Bluetooth
 ```
-sudo pacman -Syu alsa-utils bluez bluez-utils blueman pipewire wireplumber pipewire-audio pipewire-pulse pipewire-alsa
+sudo pacman -Syu alsa-utils bluez bluez-utils blueman pipewire wireplumber pipewire-audio pipewire-pulse pipewire-alsa pamixer pavucontrol
 sudo systemctl enable bluetooth.service
 systemctl enable --user pipewire-pulse.service
 ```
@@ -197,9 +200,9 @@ chsh -s /usr/bin/fish
 ```
 ### Optimization
 Optional optimization for battery life.
-Powertop: Battery optimization
-Intel-undervolt: Undervolt CPU and GPU (-80 works best for me)
-[Auto CPUfreq](https://github.com/AdnanHodzic/auto-cpufreq): Switch between CPU governors automatically
+- Powertop: Battery optimization
+- Intel-undervolt: Undervolt CPU and GPU (-80 works best for me)
+- [Auto CPUfreq](https://github.com/AdnanHodzic/auto-cpufreq): Switch between CPU governors automatically
 ```
 sudo pacman -Syu powertop intel-undervolt
 ```
